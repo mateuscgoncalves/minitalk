@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgoncalv <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/18 16:58:38 by mgoncalv          #+#    #+#             */
+/*   Updated: 2022/01/18 17:03:18 by mgoncalv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <signal.h>
+#include "libft/libft.h"
+
+void	ft_error(int ac, char **av)
+{
+	if (ac != 3)
+	{
+		write(1, "Usage : ./client <pid> <message>", 32);
+		exit(1);
+	}
+	if (!ft_atoi(av[1]))
+	{
+		write(1, "PID is not a valid number", 25);
+		exit(1);
+	}
+}
+
+void	ft_send_char(char av, int pid)
+{
+	int	i;
+	int	ret;
+
+	i = 7;
+	while (i >= 0)
+	{
+		if ((av >> i) & 1)
+			ret = kill(pid, SIGUSR2);
+		else
+			ret = kill(pid, SIGUSR1);
+		if (ret)
+			exit(1);
+		usleep(20);
+		i--;
+	}
+	usleep(100);
+}
+
+int	main(int ac, char **av)
+{
+	long	i;
+
+	i = 0;
+	ft_error(ac, av);
+	while (av[2][i] != '\0')
+	{
+		ft_send_char(av[2][i], ft_atoi(av[1]));
+		i++;
+	}
+	ft_send_char(av[2][i], ft_atoi(av[1]));
+	return (0);
+}
