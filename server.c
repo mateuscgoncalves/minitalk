@@ -6,7 +6,7 @@
 /*   By: mgoncalv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:10:16 by mgoncalv          #+#    #+#             */
-/*   Updated: 2022/01/18 18:43:42 by mgoncalv         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:18:30 by mgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static void	ft_handler(int signal, siginfo_t *info, void *context)
 	static int	j = 0;
 	static char	s[2147483647];
 
+	(void) info;
+	(void) context;
 	if (i == 0)
 		s[j] = '\0';
 	if (i < 8)
@@ -79,6 +81,7 @@ int	main(void)
 	sigaction(SIGUSR1, &s1, NULL);
 	sigaction(SIGUSR2, &s1, NULL);
 	ft_putnbr(getpid());
+	write(1, "\n", 1);
 	while (1)
 	{
 		pause();

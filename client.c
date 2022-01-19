@@ -6,14 +6,41 @@
 /*   By: mgoncalv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:58:38 by mgoncalv          #+#    #+#             */
-/*   Updated: 2022/01/18 17:03:18 by mgoncalv         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:37:45 by mgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
-#include "libft/libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_error(int ac, char **av)
+static int	ft_atoi(char *str)
+{
+	int	i;
+	int	signe;
+	int	nb;
+
+	i = 0;
+	signe = 1;
+	nb = 0;
+	while (str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			signe = -signe;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + str[i] - 48;
+		i++;
+	}
+	nb *= signe;
+	return (nb);
+}
+
+static void	ft_error(int ac, char **av)
 {
 	if (ac != 3)
 	{
@@ -27,7 +54,7 @@ void	ft_error(int ac, char **av)
 	}
 }
 
-void	ft_send_char(char av, int pid)
+static void	ft_send_char(char av, int pid)
 {
 	int	i;
 	int	ret;
