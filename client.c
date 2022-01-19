@@ -6,7 +6,7 @@
 /*   By: mgoncalv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:58:38 by mgoncalv          #+#    #+#             */
-/*   Updated: 2022/01/19 16:44:57 by mgoncalv         ###   ########.fr       */
+/*   Updated: 2022/01/19 17:40:13 by mgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static int	ft_atoi(char *str)
-{
-	int	i;
-	int	signe;
-	int	nb;
-
-	i = 0;
-	signe = 1;
-	nb = 0;
-	while (str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			signe = -signe;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + str[i] - 48;
-		i++;
-	}
-	nb *= signe;
-	return (nb);
-}
+int	ft_atoi(char *str);
 
 static void	ft_error(int ac, char **av)
 {
@@ -77,10 +53,30 @@ static void	ft_send_char(char av, int pid)
 	usleep(100);
 }
 
+static void	ft_handler_signal(int signal, siginfo_t *info, void *context)
+{
+	(void) signal;
+	(void) info;
+	(void) context;
+	write(1, "Signal received from server, Au revoir!\n", 40);
+	exit(0);
+	return ;
+}
+
+static void	ft_set_signals(void)
+{
+	struct sigaction	s1;
+
+	s1.sa_flags = SA_RESTART;
+	s1.sa_sigaction = ft_handler_signal;
+	sigaction(SIGUSR2, &s1, NULL);
+}
+
 int	main(int ac, char **av)
 {
 	long	i;
 
+	ft_set_signals();
 	i = 0;
 	ft_error(ac, av);
 	while (av[2][i] != '\0')
@@ -89,5 +85,9 @@ int	main(int ac, char **av)
 		i++;
 	}
 	ft_send_char(av[2][i], ft_atoi(av[1]));
+	while (1)
+	{
+		pause();
+	}
 	return (0);
 }

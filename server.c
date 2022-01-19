@@ -6,7 +6,7 @@
 /*   By: mgoncalv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:10:16 by mgoncalv          #+#    #+#             */
-/*   Updated: 2022/01/19 16:24:58 by mgoncalv         ###   ########.fr       */
+/*   Updated: 2022/01/19 17:30:49 by mgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static void	ft_handler(int signal, siginfo_t *info, void *context)
 		if (!s[j] || j == 2147483646)
 		{
 			write(1, s, j);
+			if (!s[j])
+				kill(info->si_pid, SIGUSR2);
 			s[0] = '\0';
 			j = 0;
 			i = 0;

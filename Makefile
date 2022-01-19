@@ -1,7 +1,7 @@
 .PHONY: all clean fclean re
 NAME = minitalk
 SRCS_SERVER = server.c
-SRCS_CLIENT = client.c
+SRCS_CLIENT = client.c ft_atoi.c
 OBJS_SERVER = ${SRCS_SERVER:.c=.o}
 OBJS_CLIENT = ${SRCS_CLIENT:.c=.o}
 SERVER = server
