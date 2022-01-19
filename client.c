@@ -6,7 +6,7 @@
 /*   By: mgoncalv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:58:38 by mgoncalv          #+#    #+#             */
-/*   Updated: 2022/01/19 15:37:45 by mgoncalv         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:44:57 by mgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static void	ft_error(int ac, char **av)
 {
 	if (ac != 3)
 	{
-		write(1, "Usage : ./client <pid> <message>", 32);
+		write(1, "Usage : ./client <pid> <message>\n", 33);
 		exit(1);
 	}
 	if (!ft_atoi(av[1]))
 	{
-		write(1, "PID is not a valid number", 25);
+		write(1, "PID is not a valid number\n", 26);
 		exit(1);
 	}
 }
@@ -67,8 +67,11 @@ static void	ft_send_char(char av, int pid)
 		else
 			ret = kill(pid, SIGUSR1);
 		if (ret)
+		{
 			exit(1);
-		usleep(20);
+			write(1, "Error sending signal to server\n", 31);
+		}
+		usleep(30);
 		i--;
 	}
 	usleep(100);
