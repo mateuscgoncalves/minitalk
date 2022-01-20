@@ -17,3 +17,26 @@ Server should receive all the characters (or a least a part of it) before print 
 The bonus part consist of the server sending a message to client to confirm that he received and printed all the message and be capable of print unicode characters.
 
 The bonus code is in the bonus branch.
+
+## Code stlye
+
+This project should respect some code style rules like a max of five functions per file and a max of 25 lines per function. 
+
+The loops should be implemented using while.
+
+## Allowed funtions
+
+* write
+* ft_printf or equivalent coded by me 
+* signal
+* sigemptyset
+* sigaddset
+* sigaction
+* kill
+* getpid
+* malloc
+* free
+* pause
+* sleep
+* usleep
+◦ exit
