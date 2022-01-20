@@ -39,4 +39,4 @@ The loops should be implemented using while.
 * pause
 * sleep
 * usleep
-◦ exit
+* exit
