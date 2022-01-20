@@ -18,7 +18,7 @@ The bonus part consist of the server sending a message to client to confirm that
 
 The bonus code is in the bonus branch.
 
-## Code stlye
+## Code style
 
 This project should respect some code style rules:
 
