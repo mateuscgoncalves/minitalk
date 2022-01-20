@@ -18,9 +18,11 @@ The bonus part consist of the server sending a message to client to confirm that
 
 The bonus code is in the bonus branch.
 
-## Code stlye
+## Code style
 
-This project should respect some code style rules like a max of five functions per file and a max of 25 lines per function. 
+This project should respect some code style rules:
+
+A max of five functions per file and a max of 25 lines per function. 
 
 The loops should be implemented using while.
 
