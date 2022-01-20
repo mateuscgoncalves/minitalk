@@ -6,7 +6,7 @@
 /*   By: mgoncalv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:58:38 by mgoncalv          #+#    #+#             */
-/*   Updated: 2022/01/19 17:40:13 by mgoncalv         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:15:50 by mgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	ft_send_char(char av, int pid)
 			ret = kill(pid, SIGUSR1);
 		if (ret)
 		{
-			exit(1);
 			write(1, "Error sending signal to server\n", 31);
+			exit(1);
 		}
 		usleep(30);
 		i--;
