@@ -20,7 +20,9 @@ The bonus code is in the bonus branch.
 
 ## Code stlye
 
-This project should respect some code style rules like a max of five functions per file and a max of 25 lines per function. 
+This project should respect some code style rules:
+
+A max of five functions per file and a max of 25 lines per function. 
 
 The loops should be implemented using while.
 
