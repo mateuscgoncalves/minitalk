@@ -51,7 +51,6 @@ static void	ft_handler(int signal, siginfo_t *info, void *context)
 	static int	j = 0;
 	static char	s[2147483647];
 
-	(void) info;
 	(void) context;
 	if (i == 0)
 		s[j] = '\0';
