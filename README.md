@@ -26,19 +26,4 @@ A max of five functions per file and a max of 25 lines per function.
 
 The loops should be implemented using while.
 
-## Allowed funtions
-
-* write
-* ft_printf or equivalent coded by me 
-* signal
-* sigemptyset
-* sigaddset
-* sigaction
-* kill
-* getpid
-* malloc
-* free
-* pause
-* sleep
-* usleep
-* exit
+Global variables aren't allowed.
