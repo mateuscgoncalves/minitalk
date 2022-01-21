@@ -6,7 +6,7 @@
 /*   By: mgoncalv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:10:16 by mgoncalv          #+#    #+#             */
-/*   Updated: 2022/01/19 17:30:49 by mgoncalv         ###   ########.fr       */
+/*   Updated: 2022/01/21 12:19:12 by mgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,9 @@ static	void	ft_putnbr(int n)
 		nb = -n;
 	}
 	if (nb > 9)
-	{
 		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
 	else
-		ft_putchar(nb + '0');
+		ft_putchar(nb % 10 + '0');
 }
 
 static int	ft_makechar(char *s, int i, int j, int signal)
