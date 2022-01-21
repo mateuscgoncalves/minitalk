@@ -4,7 +4,7 @@
 
 The objective of this project is create two executables: client and server.
 
-Server should be executed without arguments and print his pid.
+Server should be executed without arguments and print his own pid.
 
 Client should be executed with the server pid as first parameter and a message as second parameter.
 
