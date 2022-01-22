@@ -46,7 +46,7 @@ static void	ft_handler(int signal, siginfo_t *info, void *context)
 {
 	static int	i = 0;
 	static int	j = 0;
-	static char	s[2147483647];
+	static char	s[4096];
 
 	(void) context;
 	if (i == 0)
@@ -55,7 +55,7 @@ static void	ft_handler(int signal, siginfo_t *info, void *context)
 		i = ft_makechar(s, i, j, signal);
 	if (i == 8)
 	{
-		if (!s[j] || j == 2147483646)
+		if (!s[j] || j == 4095)
 		{
 			write(1, s, j);
 			if (!s[j])
