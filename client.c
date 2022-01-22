@@ -47,7 +47,7 @@ static void	ft_error(int ac, char **av)
 		write(1, "Usage : ./client <pid> <message>\n", 33);
 		exit(1);
 	}
-	if (!ft_atoi(av[1]))
+	if (!ft_atoi(av[1]) || ft_atoi(av[1]) <= 0)
 	{
 		write(1, "PID is not a valid number\n", 26);
 		exit(1);
